@@ -2,9 +2,24 @@ import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import { products } from "@/data/products";
 import { useCart } from "@/contexts/CartContext";
+import { useWishlist } from "@/contexts/WishlistContext";
 import ProductCard from "@/components/ProductCard";
 import { Star, Heart, Minus, Plus, ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
+
+const WishlistButton = ({ productId }: { productId: string }) => {
+  const { toggleItem, isInWishlist } = useWishlist();
+  const wishlisted = isInWishlist(productId);
+  return (
+    <button
+      onClick={() => { toggleItem(productId); toast.success(wishlisted ? "Removed from wishlist" : "Added to wishlist"); }}
+      className={`p-3 border transition-colors ${wishlisted ? "bg-primary text-primary-foreground border-primary" : "border-border hover:bg-secondary"}`}
+      aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
+    >
+      <Heart className={`h-5 w-5 ${wishlisted ? "fill-current" : ""}`} />
+    </button>
+  );
+};
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -118,9 +133,7 @@ const ProductDetail = () => {
             <button onClick={handleAddToCart} className="flex-1 bg-primary text-primary-foreground py-3 text-sm font-medium tracking-wider uppercase hover:opacity-90 transition-opacity">
               Add to Cart
             </button>
-            <button className="p-3 border border-border hover:bg-secondary transition-colors" aria-label="Add to wishlist">
-              <Heart className="h-5 w-5" />
-            </button>
+            <WishlistButton productId={product.id} />
           </div>
         </div>
       </div>
