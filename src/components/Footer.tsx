@@ -5,7 +5,7 @@ const Footer = () => (
     <div className="container mx-auto px-4 py-16">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
-          <h3 className="font-heading text-xl font-semibold tracking-wider uppercase mb-4">AURÈLE</h3>
+          <h3 className="font-heading text-xl font-semibold tracking-wider uppercase mb-4">ZURIEL SHATAB</h3>
           <p className="text-sm opacity-70 leading-relaxed">
             Timeless pieces crafted with intention. Where minimalism meets luxury.
           </p>
@@ -44,7 +44,7 @@ const Footer = () => (
         </div>
       </div>
       <div className="border-t border-primary-foreground/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs opacity-50">
-        <span>© 2026 AURÈLE. All rights reserved.</span>
+        <span>© 2026 ZURIEL SHATAB. All rights reserved.</span>
         <div className="flex gap-6 mt-4 md:mt-0">
           <span>Privacy Policy</span>
           <span>Terms of Service</span>
